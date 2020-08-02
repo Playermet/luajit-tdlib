@@ -181,8 +181,20 @@ function aux.set_mt_method(t,k,v)
   end
 end
 
-function aux.string_or_nil(const, cstr)
-  if cstr ~= const.NULL then
+if is_luajit then
+  -- LuaJIT way to compare with NULL
+  function aux.is_null(ptr)
+    return ptr == nil
+  end
+else
+  -- LuaFFI way to compare with NULL
+  function aux.is_null(ptr)
+    return ptr == ffi.C.NULL
+  end
+end
+
+function aux.string_or_nil(cstr)
+  if not aux.is_null(cstr) then
     return ffi.string(cstr)
   end
   return nil
