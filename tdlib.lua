@@ -122,10 +122,10 @@ function bind_clib()
   -----------------------------------------------------------
   ffi.cdef [[
     td_client * td_json_client_create ();
-	void td_json_client_send (td_client *client, const char *request);
-	const char * td_json_client_receive (td_client *client, double timeout);
-	const char * td_json_client_execute (td_client *client, const char *request);
-	void td_json_client_destroy (td_client *client);
+    void td_json_client_send (td_client *client, const char *request);
+    const char * td_json_client_receive (td_client *client, double timeout);
+    const char * td_json_client_execute (td_client *client, const char *request);
+    void td_json_client_destroy (td_client *client);
   ]]
 
   function funcs.client_create()
